@@ -2,19 +2,16 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from config import BOT_TOKEN
 from broadcast import broadcastByLocation, broadcastByName
+from keyboards import start_kb
 
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
-
-
-def get_keyboard() -> ReplyKeyboardMarkup:
-	return ReplyKeyboardMarkup(resize_keyboard=True).add(KeyboardButton(text="Погода по локации", request_location=True))
 	
 
 @dp.message_handler(commands=["start"])
 async def start_command(message: types.Message):
-    await message.reply("Привет! Напиши мне название своего города!", reply_markup=get_keyboard())
+    await message.reply("Привет! Напиши мне название своего города!", reply_markup=start_kb())
 
 
 @dp.message_handler()
