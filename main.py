@@ -1,5 +1,4 @@
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from config import BOT_TOKEN
 from broadcast import broadcastByLocation, broadcastByName
 from keyboards import start_kb
@@ -20,7 +19,7 @@ async def broadcast_send(message: types.Message):
 
 
 @dp.message_handler(content_types=['location'])
-async def location (message):
+async def location(message):
 	await message.answer(text=broadcastByLocation(message.location))
 
 

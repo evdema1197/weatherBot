@@ -3,7 +3,9 @@ import datetime
 import config.tokens as tokens
 import config.params as params
 
+
 weather_emodji = params.weather_emodji
+
 
 def broadcastByName(city):
 	try:
@@ -18,6 +20,7 @@ def broadcastByName(city):
 		wind_speed = w_request["wind"]["speed"]
 		sunrise=datetime.datetime.fromtimestamp((w_request["sys"]["sunrise"]))
 
+
 		weather_descrition=w_request["weather"][0]["main"]
 		if  weather_descrition in weather_emodji:
 			wd = weather_emodji[weather_descrition]
@@ -29,6 +32,7 @@ def broadcastByName(city):
 		f"Давление: {pressure} \nСкорость ветра: {wind_speed} м/c\n"
 		f"Восход солнца: {sunrise}\n"
 		f"Хорошего дня 🧡")
+
 
 		return message
 
